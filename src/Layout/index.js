@@ -9,31 +9,35 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./Home";
 import Decks from "../Decks/Decks";
+import CreateDeckButton from "../Buttons/CreateDeckButton";
 
 function Layout() {
   return (
     <>
       <Header />
-      <Router>
         <div className="container">
           {/* TODO: Implement the screen starting here */}
-          <Switch>
+          
+          <Router>
+            <Switch>
 
-            <Route exact path="/">
-              <Home />
-            </Route>
+              <Route exact path="/">
+                <CreateDeckButton/>
+                <br/>
+                <Home />
+              </Route>
 
-            <Route path="/decks">
-              <Decks />
-            </Route>
+              <Route path="/decks">
+                <Decks />
+              </Route>
 
-            <Route>
-              <NotFound/>
-            </Route>
+              <Route>
+                <NotFound/>
+              </Route>
 
-          </Switch>
+            </Switch>
+            </Router>
         </div>
-      </Router>
     </>
   );
 }
