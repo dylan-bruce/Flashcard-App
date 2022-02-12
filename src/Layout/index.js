@@ -3,13 +3,16 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
 } from "react-router-dom";
 import Header from "./Header";
-import NotFound from "./NotFound";
-import Home from "./Home";
-import Decks from "../Decks/Decks";
-import CreateDeckButton from "../Buttons/CreateDeckButton";
+import NotFound from "./MainPath/NotFound";
+import Home from "./MainPath/Home";
+import CreateDeck from "./MainPath/CreateDeck";
+import Deck from "./MainPath/Deck";
+import Study from "./MainPath/Study";
+import EditDeck from "./MainPath/EditDeck";
+import AddCard from "./MainPath/AddCard";
+import EditCard from "./MainPath/EditCard";
 
 function Layout() {
   return (
@@ -22,13 +25,31 @@ function Layout() {
             <Switch>
 
               <Route exact path="/">
-                <CreateDeckButton/>
-                <br/>
                 <Home />
               </Route>
 
-              <Route path="/decks">
-                <Decks />
+              <Route path="/decks/new">
+                <CreateDeck />
+              </Route>
+
+              <Route exact path="/decks/:deckId">
+                <Deck />
+              </Route>
+
+              <Route path="/decks/:deckId/study">
+                <Study />
+              </Route>
+
+              <Route path="/decks/:deckId/edit">
+                <EditDeck />
+              </Route>
+
+              <Route path="/decks/:deckId/cards/new">
+                <AddCard />
+              </Route>
+
+              <Route path="/decks/:deckId/cards/:cardId/edit">
+                <EditCard />
               </Route>
 
               <Route>
@@ -36,7 +57,7 @@ function Layout() {
               </Route>
 
             </Switch>
-            </Router>
+          </Router>
         </div>
     </>
   );
